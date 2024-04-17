@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/make.css">
+</head>
+<body>
+    <header>
+        <h2>Blog admin area</h2>
+        <a href="">Log out</a>
+        <a href="entries.html">Blog list</a>
+        <a href="make.html">Write new post</a>
+    </header>
+    <main>
+        <h1>Publish new blog post:</h1>
+        <form id="admin-blog-post">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title"placeholder="Title for the blog post">
+            <label for="body">Post content</label>
+            <input type="text" id="body" name="body" placeholder="main content of the blog post">
+            <label for="tag">Tags</label>
+            <input type="text" id="tag" name="tag" placeholder="tags separated with ','">
+            <label for="image">Image path</label>
+            <input type="text" name="image" id="image" placeholder="Image URL">
+            <a href="#" id="submit-button">
+                <p>Submit</p>
+            </a>
+        </form>
+    </main>
+    <script src="/javascript/make.js"></script>
+</body>
+</html>

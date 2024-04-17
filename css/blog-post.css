@@ -1,0 +1,19 @@
+body{
+    background-color: pink;
+}
+
+main{
+    margin: auto;
+}
+
+#blog-entry{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+
+#blog-entry img{
+    width: 200px;
+}
