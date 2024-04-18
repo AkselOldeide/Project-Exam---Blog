@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit post</title>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+    <header>
+        <h2>Blog admin area</h2>
+        <a href="">Log out</a>
+        <a href="entries.html">Blog list</a>
+        <a href="make.html">Write new post</a>
+    </header>
+    <main>
+        <h1>Edit existing post</h1>
+        <p id="post-id"></p>
+        <form id="admin-blog-post">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title">
+            <label for="body">Post content</label>
+            <input type="text" id="body" name="body">
+            <label for="tag">Tags</label>
+            <input type="text" id="tag" name="tag">
+            <label for="image">Image path</label>
+            <input type="text" name="image" id="image">
+            <a href="#" id="submit-button">
+                <p>Submit</p>
+            </a>
+        </form>
+    </main>
+    <script src="/javascript/edit.js"></script>
+</body>
+</html>

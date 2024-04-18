@@ -1,0 +1,31 @@
+#admin-blog-post{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+#admin-blog-post input{
+    margin-bottom: 8px;
+}
+
+button{
+    height: 20px;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: burlywood;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#submit-button{
+    text-align: center;
+    background-color: burlywood;
+    margin-top: 10px;
+    text-decoration: none;
+    
+}
