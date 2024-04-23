@@ -5,8 +5,7 @@ const submitButton = document.getElementById("submit-button");
 const apiURL = "https://v2.api.noroff.dev/auth/create";
 
 submitButton.onclick = function(event) {
-    // Prevent the default form submission behavior
-    event.preventDefault();
+       event.preventDefault();
 
     let postData = {
         email: emailValue.value,

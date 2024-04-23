@@ -11,13 +11,12 @@ const bearerToken = checkUserValidity();
 
 function deletePost(blogName, postId) {
     const deleteUrl = `https://v2.api.noroff.dev/blog/posts/${blogName}/${postId}`;
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWtzZWxfT2xkZWlkZSIsImVtYWlsIjoiYWtzaGVsODc3MDdAc3R1ZC5ub3JvZmYubm8iLCJpYXQiOjE3MTMyNjc5MTB9.TsBdlfVTqtVHp8ekmGGf1WP1kYm0pokKGLM9fdVcEMg"; // Replace "YOUR_BEARER_TOKEN" with your actual bearer token
     
     fetch(deleteUrl, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${bearerToken}`
         },
     })
     .then(response => {

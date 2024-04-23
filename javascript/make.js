@@ -18,8 +18,7 @@ submit.onclick = function postContent(event) {
     const titleData = document.getElementById("title").value;
     const bodyData = document.getElementById("body").value;
     const tagData = document.getElementById("tag").value;
-    const imageData = document.getElementById("image").value.trim(); // Trim the value to remove leading and trailing whitespaces
-
+    const imageData = document.getElementById("image").value.trim();
     const postData = {
         title: titleData
     };
