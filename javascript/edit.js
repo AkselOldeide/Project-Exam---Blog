@@ -1,7 +1,16 @@
 const submit = document.getElementById("submit-button");
 const formData = document.getElementById("admin-blog-post");
 const apiURL = "https://v2.api.noroff.dev/blog/posts/Aksel_Oldeide";
-const bearerToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWtzZWxfT2xkZWlkZSIsImVtYWlsIjoiYWtzaGVsODc3MDdAc3R1ZC5ub3JvZmYubm8iLCJpYXQiOjE3MTMyNjc5MTB9.TsBdlfVTqtVHp8ekmGGf1WP1kYm0pokKGLM9fdVcEMg";
+
+function checkUserValidity(){
+    const sessionToken = sessionStorage.getItem("session-key")
+    if (sessionToken == "" || sessionToken == undefined || sessionToken == NaN){
+        window.alert(`no access`);
+        window.location.href = "/account/login.html"
+    }
+    return sessionToken
+}
+const bearerToken = checkUserValidity();
 
 function getQueryParamValue(parameter) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -51,9 +60,7 @@ submit.onclick = function postContent(event) {
     const tagData = document.getElementById("tag").value.trim();
     const imageData = document.getElementById("image").value.trim();
 
-    // Check if imageData is not empty before validating URL
     if (imageData !== "") {
-        // Check URL validity
         if (!isValidUrl(imageData)) {
             window.alert("Please enter a valid URL or leave the field blank for no image");
             return;
