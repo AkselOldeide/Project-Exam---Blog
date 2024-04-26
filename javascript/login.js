@@ -26,7 +26,7 @@ submitBtn.onclick = function authorize(){
     })
     .then(data => {
         console.log(data)
-        window.alert(`user logged in`);
+        window.alert(`user ${data.data.name} logged in`);
         sessionStorage.setItem("session-key", data.data.accessToken);
         window.location.href = "/post/entries.html";
     })

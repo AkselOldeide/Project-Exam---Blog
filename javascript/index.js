@@ -11,12 +11,11 @@ function append(data) {
             ${post.tag ? `<p>Tag: ${post.tag}</p>` : ''}
             ${post.media ? `<img src="${post.media.url}" alt="${post.media.alt}">` : ''}
             <p>Author: ${post.author.name}</p>
-            <a href="/blog-page.html?ID=${post.id}">Click to read more</a>
+            <a href="/blog-post.html?ID=${post.id}">Click to read more</a>
         `;
         content.appendChild(container);
     });
 }
-
 
 fetch(blogPage)
     .then((response) => response.json())
@@ -27,3 +26,5 @@ fetch(blogPage)
         div.textContent = "Error fetching data.";
         content.appendChild(div);
     });
+
+ 

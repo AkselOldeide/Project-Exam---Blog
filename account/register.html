@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register new account</title>
-    <link rel="stylesheet" href="/css/register.css">
+    <title>Document</title>
 </head>
 <body>
     <main>
-        <section id="Register">
+        <section>
+            <h3>Create new user</h3>
             <form>
-                <input type="text" id="mail-field">
-                <input type="text" id="username-field" >
-                <input type="password" id="password-field">
-                <button id="submit-button">Create new user</button>
+                <div>
+                    <label for="email"></label>
+                    <input type="email" name="email" id="email-field" placeholder="name@stud.noroff.no">
+                </div>
+                <div>
+                    <label for="name"></label>
+                    <input type="text" name="personal-name" id="username-field" placeholder="Name_Surname">
+                </div>
+                <div>
+                    <label for="password"></label>
+                    <input type="password" name="password" id="password-field" placeholder="Min 12 characters. ">
+                </div>
+                <button id="register-button" type="button">Submit</button>
             </form>
+            <a href="/account/login.html">Click here to log in</a>
         </section>
     </main>
+
     <script src="/javascript/register.js"></script>
 </body>
 </html>
