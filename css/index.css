@@ -1,17 +1,38 @@
-img {
-    width: 200px;
-}
 
-.blog-post{
-    
-    background-color: pink;
+#carousel-monty {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .post img{
+    height: auto;
+    width: 200px;
+    display: block;
+  }
+  
+  .carousel-post {
+    display: flex;
+    flex: 0 0 30%;
+    border: 1px solid #ccc;
     padding: 20px;
-    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .carousel-post:hover {
+    transform: scale(1.05);
+  }
+  
+  #display-blog{
+    background-color: pink;
     border-radius: 15px;
     text-align: center;
-    
 }
 
-.blog-article{
-
+#display-blog img{
+    width: 200px;
 }
