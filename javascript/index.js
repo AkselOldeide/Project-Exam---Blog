@@ -9,9 +9,7 @@ const nextBtn = document.getElementById('next-button');
 const prevBtn = document.getElementById('previous-button');
 const pageIndicator = document.getElementById('page-indicator');
 
-/*
-############################################# Carousel  ###################################################
-*/
+/* ############################################# Carousel  ################################################### */
 
 let currentIndex = 0;
 let posts = [];
