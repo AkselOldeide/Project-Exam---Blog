@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--General meta-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <!---->
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register profile</title>
 </head>
 <body>
-    <main>
-        <section>
+
+    <header class="login-header" id="login-header">
+        <img id="logo-image" src="/assets/logo-2D.png" alt="">
+        <h1>GateFold</h1>
+        <h2>Record Shop</h2>
+    </header>
+
+    <main class="login-interface" id="login-interface">
             <h3>Create new user</h3>
-            <form>
-                <div>
-                    <label for="email"></label>
-                    <input type="email" name="email" id="email-field" placeholder="name@stud.noroff.no">
-                </div>
-                <div>
-                    <label for="name"></label>
-                    <input type="text" name="personal-name" id="username-field" placeholder="Name_Surname">
-                </div>
-                <div>
-                    <label for="password"></label>
-                    <input type="password" name="password" id="password-field" placeholder="Min 12 characters. ">
-                </div>
-                <button id="register-button" type="button">Submit</button>
-            </form>
-            <a href="/account/login.html">Click here to log in</a>
-        </section>
+                <form class="register-field form-field">
+                    <label for="email">Email</label>
+                    <input value="@stud.noroff.no" type="email" name="email" id="email-field" placeholder="name@stud.noroff.no">
+                    <label for="name">Name</label>
+                    <input autocomplete="off" type="text" name="personal-name" id="username-field" placeholder="Name_Surname">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password-field" placeholder="Min 12 characters" autocomplete="off">
+                    <button id="submit-button" class="red-button" type="button">Submit</button>
+                </form>
+            <a href="/account/login.html" id="login-anchor">Click here to log in</a>
     </main>
 
     <script src="/javascript/register.js"></script>

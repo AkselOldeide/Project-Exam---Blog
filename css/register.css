@@ -1,0 +1,42 @@
+.login-interface{
+    width: 400px;
+    align-self: center;
+    display: flex;
+    flex-direction: column; 
+}
+
+.register-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-field button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.login-interface a{
+
+    color: var(--white);
+}
+
+#login-anchor{
+    margin-top: 24px;
+    text-align: center; 
+}
+
+
+.login-interface h3 {
+    text-align: center;
+    color: var(--white);
+}
+
+#password-field:-webkit-autofill {
+    background-color: var(--black) !important;
+    color: var(--white) !important;
+}

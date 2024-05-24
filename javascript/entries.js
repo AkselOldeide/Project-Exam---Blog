@@ -53,25 +53,38 @@ document.addEventListener('click', function(event) {
     }
 });
 
+// ########################## Append data from fetch GET #####################
+
 function append(data) {
     data.data.forEach((post) => {
+        console.log(JSON.stringify(post.tags))
+        const createdDate = post.created.slice(0, 10)
+        const createdTime = post.created.slice(11, 19)
+        const editedDate = post.created.slice(0, 10)
+        const editedTime = post.created.slice(11, 19)
+    
         const container = document.createElement("div");
         container.classList.add("blog-post")
         container.innerHTML = `
-            <div>
-                <button class="modify-btn" data-post-id="${post.id}">Modify</button>
-                <button class="delete-btn" data-post-id="${post.id}">Delete</button>
+            <div class=date>
+                <p>Created: ${createdDate} (${createdTime})</p>
+                <p>Last edit: ${editedDate} (${editedTime})</p>
             </div>
             <h2>${post.title}</h2>
-            ${post.body ? `<p>${post.body}</p>` : ''}
-            ${post.tag ? `<p>Tag: ${post.tag}</p>` : ''}
-            ${post.media ? `<img src="${post.media.url}" alt="${post.media.alt}">` : ''}
+            <p>${post.body}</p>
+            <p>Tag: ${((JSON.stringify(post.tags)).slice(2)).slice(0, -2)}</p>
+            <img src="${post.media.url || ""}">
             <p>Author: ${post.author.name}</p>
             <a href="/blog-post.html?ID=${post.id}">Click to read more</a>
+            <div class="button-container">
+                <button class="modify-btn red-button" data-post-id="${post.id}">Modify</button>
+                <button class="delete-btn red-button" data-post-id="${post.id}">Delete</button>
+            </div>
         `;
         content.appendChild(container);
     });
 }
+
 
 
 

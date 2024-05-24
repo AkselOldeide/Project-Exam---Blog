@@ -12,6 +12,11 @@ button{
     height: 20px;
 }
 
+#submit-button{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 header{
     display: flex;
     flex-direction: row;
@@ -20,12 +25,4 @@ header{
     background-color: burlywood;
     padding: 10px;
     margin-bottom: 20px;
-}
-
-#submit-button{
-    text-align: center;
-    background-color: burlywood;
-    margin-top: 10px;
-    text-decoration: none;
-    
 }

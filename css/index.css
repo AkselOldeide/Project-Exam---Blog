@@ -1,38 +1,206 @@
-
-#carousel-monty {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .post img{
-    height: auto;
-    width: 200px;
-    display: block;
-  }
-  
-  .carousel-post {
-    display: flex;
-    flex: 0 0 30%;
-    border: 1px solid #ccc;
-    padding: 20px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .carousel-post:hover {
-    transform: scale(1.05);
-  }
-  
-  #display-blog{
-    background-color: pink;
-    border-radius: 15px;
-    text-align: center;
+.thumbnail-image {
+  object-fit: cover;
+  width: 100%; 
+  height: auto; 
 }
 
-#display-blog img{
-    width: 200px;
+.nav-buttons, #sort-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-size: cover;
+}
+
+/*############################# Carousel elements ####################################*/
+
+.carousel-post {
+  vertical-align: middle;
+  max-width: fit-content;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  text-align: center;
+  flex: 0 0 30%;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.carousel-post:hover {
+  transform: scale(1.2);
+  box-shadow: 4px 4px 4px grey;
+}
+
+#carousel-monty {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#right-post:hover,
+#left-post:hover {
+  z-index: 10;
+  transition-duration: 200ms;
+  opacity: 100%;
+}
+
+.carousel-post .post {
+  background-color: rgb(0, 0, 0);
+}
+
+#right-post,
+#left-post {
+  z-index: 0;
+  opacity: 70%;
+}
+
+#center-post {
+  z-index: 10;
+  position: relative;
+  transform: scale(1.2);
+}
+
+#center-post:hover {
+  transform: scale(1.4);
+}
+
+/*############################# Card containing image and post preview ####################################*/
+
+.post-tile {
+  display: flex;
+  flex-direction: row;
+  position: relative; 
+  overflow: hidden;
+  width: 400px;
+  height: 240px; 
+  margin: 10px; 
+  background-size: contain;
+  background-position: right;
+}
+
+.post-tile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+
+
+#display-blog {
+  color: white;
+  background-color: rgb(94, 94, 94);
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#display-blog div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  overflow: hidden; 
+}
+
+#display-blog div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6); 
+  z-index: 1; 
+}
+
+#display-blog img,
+#display-blog .text-content {
+  position: relative; 
+  z-index: 2; 
+}
+
+#display-blog div:hover {
+  opacity: 0.7;
+  cursor: url(../assets/logo-2D-smaller.png) 5 5, auto;;
+}
+
+#display-blog div:hover {
+  background: rgba(0, 0, 0, 0.562);
+}
+
+.text-content {
+  height: 100%;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: white;
+  background: rgba(0, 0, 0, 0.562);
+  padding: 5px;
+  box-sizing: border-box; 
+  position: relative; 
+  overflow: hidden; 
+}
+
+.main-text {
+  flex-grow: 1;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: normal; 
+  display: -webkit-box; 
+  -webkit-line-clamp: 5; 
+  -webkit-box-orient: vertical; 
+}
+
+.text-content h2{
+  font-size: 1.2em;
+}
+
+.text-content h3, .text-content p{
+  font-size: 0.8em;
+}
+
+#carousel-monty{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.python-image{
+  height: 240px;
+  width: 200px;
+  object-fit:cover;
+  object-position:center;
+}
+
+@media screen and (max-width: 480px) {
+  #carousel-monty{
+    width: 100%;
+    margin: 10px;
+  }
+
+}
+
+@media screen and (max-width: 870px){
+  .post-tile{
+    width: 100%;
+  }
+  #display-blog div {
+    background: rgba(0, 0, 0, 0.562);
+  }
+
+  .text-content{
+    width: 100%;
+  }
 }

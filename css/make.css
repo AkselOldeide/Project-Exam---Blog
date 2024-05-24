@@ -22,10 +22,8 @@ header{
     margin-bottom: 20px;
 }
 
+
 #submit-button{
-    text-align: center;
-    background-color: burlywood;
-    margin-top: 10px;
-    text-decoration: none;
-    
+    margin-left: auto;
+    margin-right: auto;
 }

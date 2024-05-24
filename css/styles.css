@@ -1,0 +1,273 @@
+:root{
+    /*Colors*/
+    --yellow:#F0C632;
+    --black: #000;
+    --grey: #3B3B3B;
+    --white: #FFFAE3;
+    --orange: #F55D3E;
+
+    --cursor: url(assets\logo-2D.png) 12 12, auto;
+}
+
+h1, h2, h3, h4, p, a, input:placeholder-shown  {
+      font-family: "Lexend", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+body{
+  margin: 0;
+  background-color: var(--grey);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/*################################################################################
+################################### Sections #################################*/
+
+
+/*################################### Header - Admin #################################*/
+
+.admin-header{
+  position: sticky;
+  top: 0;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: 10px;
+  margin-bottom: 20px;
+  gap: 20px;
+  height: 80px;
+}
+
+.admin-header > img{
+  height: 64px;
+  width: 64px;
+}
+
+.admin-header > a{
+  text-decoration: none;
+}
+
+.admin-header :nth-child(2) {
+  margin-right: auto;
+}
+
+/*################################### Footer - Admin #################################*/
+
+.admin-footer{
+  background-color: var(--white);
+  display: none;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  flex-direction: row;
+  height: 80px;
+  justify-content: space-evenly ;
+}
+
+.admin-footer > a{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  color:var(--black);
+  text-decoration: none;
+}
+
+/*################################### Header - Login/Register #################################*/
+
+.login-header{
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.login-header > img{
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 300px;
+  width: 300px;
+}
+
+.login-header > h1{
+  font-size: 5em;
+  margin-bottom: 0px;
+  margin-top: 16px;
+}
+
+
+.login-header > h2{
+  margin-top: 0px;
+}
+
+/*################################### Media Queries - Header / Footer #################################*/
+
+@media screen and (max-width: 500px) {
+
+  .admin-header > a{
+    display: none;
+  }
+
+  .admin-header > h2{
+    margin: auto;
+  }
+
+  .admin-footer{
+    display: flex;
+
+  }
+
+  .login-interface{
+    width: 90%;
+}
+
+#logo-image{
+    width: 100px;
+    height: 100px;
+}
+
+#login-header > h1{
+    font-size: 3em;
+}
+}
+
+
+
+/*################################################################################
+################################### Components #################################*/
+
+
+/*################################### RED BUTTON #################################*/
+.red-button{
+  width: 180px;
+  height: 35px;
+  color: var(--white);
+  background-color: var(--orange); 
+
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  box-shadow: hsla(0, 0%, 0%, 0.25) 0px 4px;
+}
+
+.red-button:hover{
+  cursor: pointer;
+  box-shadow: none;
+  background-color: #fc512f;
+}
+
+.red-button:active{
+  box-shadow: inset hsla(0, 0%, 0%, 0.25) 4px 2px 4px;
+  background-color: #d34225;
+}
+
+#submit-button{
+  margin-top: 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*################################### Forms #####################################*/
+
+/*General config*/
+
+.form-field{
+  color: var(--white);
+  background-color: var(--grey);
+}
+
+.form-field > :placeholder-shown{
+  color: var(--white);
+  background-color: var(--grey);
+}
+
+.form-field > label, #image-preview > label{
+    font-family: "Khand", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.form-field > input, .form-field > textarea, #image-preview{
+  border: solid 1px var(--white);
+  background-color: var(--grey);
+  color: var(--white);
+
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/*Specific override to prevent default browser formatting */
+
+input:-webkit-autofill {
+  color: var(--white) !important ; 
+  background-color: var(--grey) !important; 
+}
+
+.input:-moz-autofill {
+  color: var(--white) !important;
+  background-color: var(--grey) !important;
+}
+
+.jnput:-ms-autofill {
+  color: var(--white) !important;
+  background-color: var(--grey) !important;
+}
+
+/*Forms for blog posts:*/
+
+.post-creation-form{
+  width: 320px;
+  align-self: center;
+  color: var(--white);
+}
+
+#text-area-label{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#text-area-label span{
+  color:#fffae36b
+}
+
+#text-area-label span:hover{
+  color:var(--white);
+  transition-duration: 500ms;
+}
+
+@media screen and (min-width: 840px) {
+  .post-creation-form{
+    width: 620px;
+  }
+}
+
+#preview-image{
+  height: 60px;
+  object-fit: contain;
+  width: 100%;
+}
+
+#image-preview{
+  border: 0px;
+}
+
+textarea{
+  overflow-y: hidden;
+}

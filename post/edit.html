@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--General meta-->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous"></script>
+    <!---->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit post</title>
     <link rel="stylesheet" href="/css/edit.css">
 </head>
 <body>
-    <header>
-        <h2>Blog admin area</h2>
-        <a href="/account/login.html">Log out</a>
+
+    <header class="admin-header">
+        <img id="logo" src="/assets/logo-2D.png" alt="">
+        <h2>Blog admin area</h2>      
         <a href="entries.html">Blog list</a>
-        <a href="make.html">Write new post</a>
+        <a href="make.html">New post</a>
+        <a href="/account/login.html">Log out</a>
     </header>
-    <main>
+    
+    <main class="post-creation-form">
         <h1>Edit existing post</h1>
         <p id="post-id"></p>
-        <form id="admin-blog-post">
+        <form id="admin-blog-post" class="form-field">
             <label for="title">Title</label>
             <input type="text" id="title" name="title">
-            <label for="body">Post content</label>
-            <input type="text" id="body" name="body">
+            <label id="text-area-label" for="body">Post content <span id="char-counter">Characters left: 2000</span></label>
+            <textarea maxlength="2000" id="body" name="body" placeholder="Blog content here..." required></textarea>
             <label for="tag">Tags</label>
             <input type="text" id="tag" name="tag">
             <label for="image">Image path</label>
             <input type="text" name="image" id="image">
-            <a href="#" id="submit-button">
-                <p>Submit</p>
-            </a>
+            <section id="image-preview"></section>
+            <a href="#" id="submit-button" class="red-button">Submit</a>
         </form>
     </main>
+
+    <footer class="admin-footer">
+        <a href="entries.html"><i class="fas fa-list-alt"></i></a>
+        <a href="make.html"><i class="fas fa-pencil-alt"></i></a>
+        <a href="/account/login.html"><i class="fas fa-sign-out-alt"></i></a>
+    </footer>
+
     <script src="/javascript/edit.js"></script>
 </body>
 </html>

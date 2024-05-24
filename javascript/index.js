@@ -5,12 +5,13 @@ const rightPost = document.getElementById('right-post');
 const blogGrid = document.getElementById('display-blog');
 const sortBtn = document.getElementById('sort-button');
 const paramBtn = document.getElementById('parameter-button');
-const nextBtn = document.getElementById('next-button');
-const prevBtn = document.getElementById('previous-button');
-const pageIndicator = document.getElementById('page-indicator');
+const nextBtns = document.querySelectorAll(".next-button");
+const prevBtns = document.querySelectorAll('.previous-button');
+const pageIndicators = document.querySelectorAll('.page-indicator');
 
-/* ############################################# Carousel  ################################################### */
-
+/*
+############################################# Carousel  ###################################################
+*/
 let currentIndex = 0;
 let posts = [];
 
@@ -50,8 +51,7 @@ function getPostHTML(post) {
   if (!post) return '';
   return `
     <div class="post">
-      <h3>${post.title || ''}</h3>
-      <img src="${post.media.url || ''}"></img>
+      <img class="thumbnail-image" src="${post.media.url || ''}"></img>
     </div>
   `;
 }
@@ -59,19 +59,25 @@ function getPostHTML(post) {
 leftPost.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + posts.length) % posts.length;
   updateCarousel();
+  leftPost.classList.add('active');
+  centerPost.classList.add('active');
+  rightPost.classList.add('active');
 });
 
 rightPost.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % posts.length;
   updateCarousel();
+  leftPost.classList.add('active');
+  centerPost.classList.add('active');
+  rightPost.classList.add('active');
 });
 
 /*######################################### Python ######################################## */
 
 let currentPage = 1;
 let postsPerPage = 12;
-let currentSort = 'created'; // Default sorting criteria
-let sortOrder = 'desc'; // Default sort order
+let currentSort = 'created';
+let sortOrder = 'desc';
 
 function fetchBlog() {
   let blogEndpoint = `https://v2.api.noroff.dev/blog/posts/Aksel_Oldeide?limit=${postsPerPage}&page=${currentPage}&sort=${currentSort}&sortOrder=${sortOrder}`;
@@ -85,12 +91,12 @@ function fetchBlog() {
     .then(blogData => {
       blogPost = blogData.data;
       renderPosts(blogData);
-      updatePageIndicator(currentPage);
+      updatePageIndicators(currentPage);
 
       if (blogData.data.length < postsPerPage) {
-        nextBtn.disabled = true;
+        nextBtns.forEach(btn => btn.disabled = true);
       } else {
-        nextBtn.disabled = false;
+        nextBtns.forEach(btn => btn.disabled = false);
       }
 
       updatePrevBtnStatus();
@@ -100,80 +106,76 @@ function fetchBlog() {
     });
 }
 
-
 function renderPosts(blogData) {
   blogGrid.innerHTML = '';
 
   blogData.data.forEach((blogPost) => {
-      const postElement = document.createElement('div');
-      
-      postElement.innerHTML = `
-          <h2>${blogPost.title}</h2>
-          <p>${blogPost.body}</p>
-          <a href="/blog-post.html?ID=${blogPost.id}">Click here to read more</a>
-      `;
+    const postElement = document.createElement('div');
+    postElement.classList.add('post-tile');
+    postElement.style.backgroundImage = `url(${blogPost.media.url})`;
+    postElement.style.backgroundRepeat = "no-repeat"
+    postElement.style.backgroundSize = "cover"
 
-      blogGrid.appendChild(postElement);
+    postElement.innerHTML = `
+      <img src="${blogPost.media.url}" class="python-image" width="200px">   
+      <article class="text-content">
+        <h2>${blogPost.title}</h2>
+        <h3>By Aksel Oldeide</h3>
+        <p class="main-text">${blogPost.body}</p>
+      </article>
+    `;
+
+    // Add an event listener to navigate to the blog post page when clicked
+    postElement.addEventListener('click', () => {
+      window.location.href = `/blog-post.html?ID=${blogPost.id}`;
+    });
+
+    blogGrid.appendChild(postElement);
   });
 }
 
-function updatePageIndicator(currentPage) {
-  pageIndicator.innerText = `Page ${currentPage}`;
+function updatePageIndicators(currentPage) {
+  pageIndicators.forEach(indicator => {
+    indicator.innerText = `Page ${currentPage}`;
+  });
 }
+
+function updatePrevBtnStatus() {
+  prevBtns.forEach(btn => {
+    btn.disabled = (currentPage === 1);
+  });
+}
+
+sortBtn.addEventListener('click', function() {
+  sortOrder = sortOrder === 'desc' ? 'asc' : 'desc';
+  fetchBlog();
+  sortBtn.innerText = sortOrder === 'desc' ? 'Descending ⬇️' : 'Ascending ⬆️';
+});
+
+paramBtn.addEventListener('click', function() {
+  currentSort = currentSort === 'created' ? 'title' : 'created';
+  fetchBlog();
+  paramBtn.innerText = currentSort === 'created' ? 'Date of creation 📅' : 'Title alphabetical 🔤';
+});
+
+nextBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    currentPage++;
+    fetchBlog();
+  });
+});
+
+prevBtns.forEach(btn => {
+  btn.disabled = true;
+  btn.addEventListener('click', function() {
+    if (currentPage > 1) {
+      currentPage--;
+      fetchBlog();
+    }
+  });
+});
+
+updatePrevBtnStatus();
 
 fetchCarousel();
 fetchBlog();
-
-/*######################################### Filtering  ######################################## */
-
-sortBtn.onclick = function toggleOrder(){
-  if (sortOrder === "desc"){
-    sortOrder = "asc"
-    fetchBlog()
-    sortBtn.innerText= "Ascending ⬆️"
-  }
-  else{
-    sortOrder = "desc"
-    fetchBlog()
-    sortBtn.innerText= "Descending ⬇️"
-  }
-}
-
-paramBtn.onclick = function toggleParam(){
-  if (currentSort === "created"){
-    currentSort = "title"
-    fetchBlog()
-    paramBtn.innerText= "Title alphabetical 🔤"
-  }
-  else{
-    currentSort = "created"
-    fetchBlog()
-    paramBtn.innerText= "Date of creation 📅"
-  }
-}
-nextBtn.onclick = function nextPage() {
-  currentPage++;
-  fetchBlog();
-}
-
-
-prevBtn.disabled = true;
-
-function updatePrevBtnStatus() {
-  prevBtn.disabled = (currentPage === 1);
-}
-
-
-prevBtn.onclick = function prevPage() {
-  if (currentPage > 1) {
-    currentPage--;
-    prevBtn.disabled = false;
-    fetchBlog();
-    if (nextBtn.disabled) {
-      nextBtn.disabled = false;
-    }
-    updatePrevBtnStatus();
-  }
-};
-
-updatePrevBtnStatus();
