@@ -1,123 +1,188 @@
-const submit = document.getElementById("submit-button");
-const formData = document.getElementById("admin-blog-post");
-const apiURL = "https://v2.api.noroff.dev/blog/posts/Aksel_Oldeide";
+document.addEventListener("DOMContentLoaded", function() {
+    const submit = document.getElementById("submit-button");
+    const apiURL = "https://v2.api.noroff.dev/blog/posts/Aksel_Oldeide";
 
-function checkUserValidity(){
-    const sessionToken = sessionStorage.getItem("session-key")
-    if (sessionToken == "" || sessionToken == undefined || sessionToken == NaN){
-        window.alert(`no access`);
-        window.location.href = "/account/login.html"
-    }
-    return sessionToken
-}
-const bearerToken = checkUserValidity();
-
-function getQueryParamValue(parameter) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(parameter);
-}
-
-function fetchBlogPostData(postID) {
-    const dynamicApiURL = `${apiURL}/${postID}`;
-    fetch(dynamicApiURL, {
-        method: "GET",
-        headers: {
-            "Authorization": `Bearer ${bearerToken}`
+    function checkUserValidity() {
+        const sessionToken = sessionStorage.getItem("session-key");
+        if (!sessionToken) {
+            alert("No access");
+            window.location.href = "/account/login.html";
+            return null;
         }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        return sessionToken;
+    }
+
+    const bearerToken = checkUserValidity();
+
+    function getQueryParamValue(parameter) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(parameter);
+    }
+
+        //################ Check URL parameter ################
+
+        const postID = getQueryParamValue("ID");
+        if (postID) {
+            fetchBlogPostData(postID);
+        } else {
+            console.error("Post ID not found in URL");
         }
-        return response.json();
-    })
-    .then(data => {
-        const getData = data.data
-        document.getElementById("title").value = getData.title || "";
-        document.getElementById("body").value = getData.body || "";
-        document.getElementById("tag").value = (getData.tags && getData.tags.length > 0) ? getData.tags[0] : "";
-        document.getElementById("image").value = (getData.media && getData.media.url) ? getData.media.url : "";
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
 
-function isValidUrl(url) {
-    try {
-        new URL(url);
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
+    //################ Indicator for character count display ################
+    function updateCharCount() {
+        const wordCount = document.getElementById("char-counter")
+        const text = document.getElementById('body').value;
+        wordCount.textContent = `Characters left: ${2000 - text.length}`
 
-submit.onclick = function postContent(event) {
-    event.preventDefault();
+        if (text.length == 2000){
+            wordCount.style.color = "red"
+            wordCount.textContent = "You have reached the maximum number of characters"
 
-    const titleData = document.getElementById("title").value;
-    const bodyData = document.getElementById("body").value.trim();
-    const tagData = document.getElementById("tag").value.trim();
-    const imageData = document.getElementById("image").value.trim();
-
-    if (imageData !== "") {
-        if (!isValidUrl(imageData)) {
-            window.alert("Please enter a valid URL or leave the field blank for no image");
-            return;
         }
-    }
-
-    const postData = {
-        title: titleData
-    };
-
-    if (bodyData !== "") {
-        postData.body = bodyData;
-    }
-
-    if (tagData !== "") {
-        postData.tags = [tagData];
-    }
-
-    if (isValidUrl(imageData)) {
-        postData.media = {
-            url: imageData
-        };
-    }
-
-    const postID = getQueryParamValue("ID");
-    if (!postID) {
-        console.error("Post ID not found in URL");
-        return;
+        else if (text.length > 1800){
+            wordCount.style.color = "orange"
+        }
+        else if (text.length > 1500){
+            wordCount.style.color = "yellow"
+        }
+        else if (text.length <= 1500){
+            wordCount.style.color = ""
+        }
     }
     
-    const dynamicApiURL = `${apiURL}/${postID}`;
-    fetch(dynamicApiURL, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${bearerToken}`
-        },
-        body: JSON.stringify(postData)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Success:', data);
-        window.alert("Post updated successfully!");
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-};
+    document.getElementById('body').addEventListener('input', updateCharCount);
 
-const postID = getQueryParamValue("ID");
-if (postID) {
-    fetchBlogPostData(postID);
-} else {
-    console.error("Post ID not found in URL");
-}
+
+    //################ Populating the input fields with fetch GET data ################
+
+    function fetchBlogPostData(postID) {
+        const dynamicApiURL = `${apiURL}/${postID}`;
+        fetch(dynamicApiURL, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${bearerToken}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const getData = data.data;
+            document.getElementById("title").value = getData.title || "";
+            document.getElementById("body").value = getData.body || "";
+            document.getElementById("tag").value = (getData.tags && getData.tags.length > 0) ? getData.tags[0] : "";
+            document.getElementById("image").value = (getData.media && getData.media.url) ? getData.media.url : "";
+
+            adjustTextareaHeight(document.getElementById("body"));
+            updateCharCount()
+            loadPreview()
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    //################ Indicator for character count display ################
+
+    submit.onclick = function postContent(event) {
+        event.preventDefault();
+    
+        const titleData = document.getElementById("title").value.trim();
+        const bodyData = document.getElementById("body").value.trim();
+        const tagData = document.getElementById("tag").value.trim();
+        const imageData = document.getElementById("image").value.trim();
+    
+        if (!titleData || !bodyData || !tagData || !imageData) {
+            alert("All fields are required.");
+            return;
+        }
+    
+        function isValidUrl(url) {
+            try {
+                new URL(url);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+    
+        if (imageData.length > 0 && !isValidUrl(imageData)) {
+            alert("Please enter a valid image URL.");
+            return;
+        }
+    
+        const postData = {
+            title: titleData,
+            body: bodyData,
+            tags: [tagData],
+            media: isValidUrl(imageData) ? { url: imageData } : undefined
+        };
+    
+        fetch(apiURL+"/"+postID, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${bearerToken}`
+            },
+            body: JSON.stringify(postData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Success:', data);
+            alert(`Blogpost ID ${data.id} created successfully`);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
+
+
+
+    //################ Image preview module ################
+
+    const imgPreview = document.getElementById("image-preview")
+    function loadPreview(){
+        let imageURL = document.getElementById("image")
+   
+        if (imageURL.value.length > 12) {
+            imgPreview.innerHTML = `
+                <label>Image preview:</label>
+                <img id="preview-image" src="${imageURL.value}">    
+            `;
+        } else {
+            imgPreview.innerHTML = '';
+        }
+    }
+    document.getElementById('image').addEventListener('input', loadPreview);
+
+    
+    //################ Text area sizing ################
+
+    function adjustTextareaHeight(textarea) {
+        if (textarea) {
+            textarea.style.height = 'auto'; 
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+    }
+    document.getElementById("body").addEventListener("input", function() {
+        adjustTextareaHeight(this);
+    });
+    
+    document.getElementById("body").addEventListener("click", function() {
+        adjustTextareaHeight(this);
+    });
+    document.getElementById("body").addEventListener("click", function() {
+        adjustTextareaHeight(this);
+    });
+
+    const bodyTextarea = document.getElementById("body");
+    adjustTextareaHeight(bodyTextarea);
+});

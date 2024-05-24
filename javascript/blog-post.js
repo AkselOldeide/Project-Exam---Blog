@@ -18,12 +18,20 @@ fetch(`${blogPage}${postId}`)
     .then(result => {
         const data = result.data; 
         blogEntry.innerHTML = `
+            <img id="header-image" src="${data.media.url}">
             <h2>${data.title}</h2>
-            <p>${data.body}</p>
-            <p>Tag: ${data.tag}</p>
-            ${data.media ? `<img src="${data.media.url}" alt="${data.media.alt}">` : ''}
             <p>Author: ${data.author.name}</p>
+            <p>${data.body}</p>
+            <p>Tag: ${data.tags}</p>
         `;
+        document.body.style.backgroundImage = `url(${data.media.url})`;
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        
+        // Ensure the content sits above the overlay
+        blogEntry.style.position = 'relative';
+        blogEntry.style.zIndex = '1';
     })
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);

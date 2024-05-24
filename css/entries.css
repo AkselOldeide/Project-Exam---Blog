@@ -2,21 +2,43 @@ img{
     width: 200px;
 }
 
+#display-blog{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .blog-post{
-    background-color: burlywood;
+    background-color: rgb(118, 118, 118);
     margin: 10px;
     padding: 20px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 400px;
+    height: auto;
 }
 
-header{
+.blog-post > a{
+    margin-bottom: 30px;
+    text-decoration:none;
+    text-shadow: var(--black) 0px 2px;
+    color: var(--white);
+}
+
+.blog-post > a:hover{
+    text-shadow: none;
+}
+
+.button-container{
+    margin-top: auto;
+}
+
+.date{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: burlywood;
-    padding: 10px;
-    margin-bottom: 20px;
+    text-wrap:stable;
 }

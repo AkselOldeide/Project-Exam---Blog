@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--General meta-->
+    <link rel="icon" href="/assets/logo-2D.png" type="image/png">
+    <meta name="author" content="Aksel Oldeide">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <!--Generic meta-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!--Specific meta-->
     <link rel="stylesheet" href="/CSS/index.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Gatefold Blog Page</title>
+
+
 </head>
 <body>
+    <header>
+        <section id="header-contents">
+            <div></div>
+            <div><img src="/" alt=""></div>
+            <div>
+                <a href="">
+                    
+                </a>
+            </div>
+        </section>
+    </header>
+
     <main>
         <section id="carousel-monty">
             <div class="carousel-post" id="left-post"></div>
             <div class="carousel-post" id="center-post"></div>
             <div class="carousel-post" id="right-post"></div>
-        </section>
-        
-        <button id="sort-button">Descending ⬇️</button>
-        <button id="parameter-button">Date of creation 📅</button>
-        <section>
-            <button id="previous-button">Previous Page</button>
-            <h1 id="page-indicator"></h1>
-            <button id="next-button">Next page</button>
+        </section>  
+
+        <section id="grid-python">
+            
+            <section class="nav-buttons">
+                <button class="previous-button">Previous Page</button>
+                <h1 class="page-indicator"></h1>
+                <button class="next-button">Next page</button>
+            </section>
+
+            <section id="sort-buttons">
+                <button id="sort-button">Descending ⬇️</button>
+                <button id="parameter-button">Date of creation 📅</button>
+            </section>
+
             <section id="display-blog"></section>
+
+            <section class="nav-buttons">
+                <button class="previous-button">Previous Page</button>
+                <h1 class="page-indicator"></h1>
+                <button class="next-button">Next page</button>
+            </section>
+
         </section>
 
-
-        
     </main>
     <script src="/JavaScript/index.js"></script>
 </body>
