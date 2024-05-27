@@ -9,7 +9,7 @@
     --cursor: url(assets\logo-2D.png) 12 12, auto;
 }
 
-h1, h2, h3, h4, p, a, input:placeholder-shown  {
+h1, h2, h3, h4, p, summary, a, input:placeholder-shown  {
       font-family: "Lexend", sans-serif;
       font-optical-sizing: auto;
       font-weight: 500;
@@ -52,6 +52,7 @@ body{
 
 .admin-header > a{
   text-decoration: none;
+  color: var(--black);
 }
 
 .admin-header :nth-child(2) {

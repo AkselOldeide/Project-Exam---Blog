@@ -1,5 +1,11 @@
 const carouselEndpoint = "https://v2.api.noroff.dev/blog/posts/Aksel_Oldeide?limit=3&page=1&sort=created&sortOrder=desc";
 const leftPost = document.getElementById('left-post');
+
+const allCategoriesBtn = document.getElementById('tag-show-all');
+const hiphopBtn = document.getElementById('tag-hiphop');
+const electronicBtn = document.getElementById('tag-electronic');
+const indieBtn = document.getElementById('tag-indie');
+
 const centerPost = document.getElementById('center-post');
 const rightPost = document.getElementById('right-post');
 const blogGrid = document.getElementById('display-blog');
@@ -8,6 +14,8 @@ const paramBtn = document.getElementById('parameter-button');
 const nextBtns = document.querySelectorAll(".next-button");
 const prevBtns = document.querySelectorAll('.previous-button');
 const pageIndicators = document.querySelectorAll('.page-indicator');
+
+
 
 /*
 ############################################# Carousel  ###################################################
@@ -37,9 +45,9 @@ function updateCarousel() {
   const leftIndex = (centerIndex - 1 + posts.length) % posts.length;
   const rightIndex = (centerIndex + 1) % posts.length;
 
-  leftPost.innerHTML = getPostHTML(posts[leftIndex]);
+  leftPost.innerHTML = getPostHTML(posts[leftIndex], 'left');
   centerPost.innerHTML = getPostHTML(posts[centerIndex]);
-  rightPost.innerHTML = getPostHTML(posts[rightIndex]);
+  rightPost.innerHTML = getPostHTML(posts[rightIndex], 'right');
 
   centerPost.onclick = () => {
     const postId = posts[centerIndex].id;
@@ -47,14 +55,18 @@ function updateCarousel() {
   };
 }
 
-function getPostHTML(post) {
+function getPostHTML(post, position) {
   if (!post) return '';
+  const overlayHTML = position ? `<div class="overlay arrow-${position}"></div>` : '';
   return `
     <div class="post">
       <img class="thumbnail-image" src="${post.media.url || ''}"></img>
+      ${overlayHTML}
+      <h2 id="post-title-center">${post.title}</h2>
     </div>
   `;
 }
+
 
 leftPost.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + posts.length) % posts.length;
@@ -78,9 +90,11 @@ let currentPage = 1;
 let postsPerPage = 12;
 let currentSort = 'created';
 let sortOrder = 'desc';
+let currentFilter = '';
+allCategoriesBtn.disabled = true
 
 function fetchBlog() {
-  let blogEndpoint = `https://v2.api.noroff.dev/blog/posts/Aksel_Oldeide?limit=${postsPerPage}&page=${currentPage}&sort=${currentSort}&sortOrder=${sortOrder}`;
+  let blogEndpoint = `https://v2.api.noroff.dev/blog/posts/Aksel_Oldeide?limit=${postsPerPage}&page=${currentPage}&sort=${currentSort}&sortOrder=${sortOrder}&_tag=${currentFilter}`;
   fetch(blogEndpoint)
     .then(blogResponse => {
       if (!blogResponse.ok) {
@@ -145,6 +159,50 @@ function updatePrevBtnStatus() {
     btn.disabled = (currentPage === 1);
   });
 }
+
+//Buttons
+allCategoriesBtn.addEventListener('click', function(){
+  currentFilter = ""
+  fetchBlog();
+  
+  allCategoriesBtn.disabled = true
+  hiphopBtn.disabled = false
+  electronicBtn.disabled = false
+  indieBtn.disabled = false
+})
+
+hiphopBtn.addEventListener('click', function(){
+  currentFilter = "hiphop"
+  fetchBlog();
+  
+  allCategoriesBtn.disabled = false
+  hiphopBtn.disabled = true
+  electronicBtn.disabled = false
+  indieBtn.disabled = false
+
+})
+
+electronicBtn.addEventListener('click', function(){
+  currentFilter = "electronic"
+  fetchBlog();
+  
+  allCategoriesBtn.disabled = false
+  hiphopBtn.disabled = false
+  electronicBtn.disabled = true
+  indieBtn.disabled = false
+
+})
+
+indieBtn.addEventListener('click', function(){
+  currentFilter = "indie-rock"
+  fetchBlog();
+  
+  allCategoriesBtn.disabled = false
+  hiphopBtn.disabled = false
+  electronicBtn.disabled = false
+  indieBtn.disabled = true
+
+})
 
 sortBtn.addEventListener('click', function() {
   sortOrder = sortOrder === 'desc' ? 'asc' : 'desc';

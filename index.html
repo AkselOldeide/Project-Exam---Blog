@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <!--General meta-->
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="icon" href="/assets/logo-2D.png" type="image/png">
     <meta name="author" content="Aksel Oldeide">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,26 +12,14 @@
     <!--Generic meta-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!--Specific meta-->
     <link rel="stylesheet" href="/CSS/index.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>Gatefold Blog Page</title>
+    <title>Browse blog posts</title>
 
 
 </head>
 <body>
-    <header>
-        <section id="header-contents">
-            <div></div>
-            <div><img src="/" alt=""></div>
-            <div>
-                <a href="">
-                    
-                </a>
-            </div>
-        </section>
-    </header>
-
     <main>
         <section id="carousel-monty">
             <div class="carousel-post" id="left-post"></div>
@@ -38,25 +27,38 @@
             <div class="carousel-post" id="right-post"></div>
         </section>  
 
-        <section id="grid-python">
-            
-            <section class="nav-buttons">
-                <button class="previous-button">Previous Page</button>
-                <h1 class="page-indicator"></h1>
-                <button class="next-button">Next page</button>
-            </section>
 
-            <section id="sort-buttons">
-                <button id="sort-button">Descending ⬇️</button>
-                <button id="parameter-button">Date of creation 📅</button>
-            </section>
+
+        <section id="grid-python">
+
+            <details id="sort-and-filter">
+                <summary>Filtering and sorting</summary>
+                <section id="sort-buttons">
+                    <p>Sort:</p>
+                    <div>
+                        <button id="sort-button" class="index-button">Descending ⬇️</button>
+                        <button id="parameter-button" class="index-button">Date of creation 📅</button>
+                    </div>
+                </section>
+
+                <section id="filter-buttons">
+                    <p>Filter:</p>
+                    <section>
+                            <button class="index-button" id="tag-show-all">Show all</button>
+                            <button class="index-button" id="tag-hiphop">Hiphop</button>
+                            <button class="index-button" id="tag-indie">Indie</button>
+                            <button class="index-button" id="tag-electronic">Electronic</button>    
+                    </section>
+                </section>
+            </details>
+
 
             <section id="display-blog"></section>
 
             <section class="nav-buttons">
-                <button class="previous-button">Previous Page</button>
+                <button class="previous-button index-button">Previous Page</button>
                 <h1 class="page-indicator"></h1>
-                <button class="next-button">Next page</button>
+                <button class="next-button index-button">Next page</button>
             </section>
 
         </section>
@@ -64,4 +66,4 @@
     </main>
     <script src="/JavaScript/index.js"></script>
 </body>
-</html
+</html>
