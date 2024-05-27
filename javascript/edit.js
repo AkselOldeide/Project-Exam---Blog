@@ -136,8 +136,8 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
-            console.log('Success:', data);
-            alert(`Blogpost ID ${data.id} created successfully`);
+            alert(`Blogpost ID ${data.data.id} edited`);
+            window.location.href = "/post/entries.html"
         })
         .catch(error => {
             console.error('Error:', error);
