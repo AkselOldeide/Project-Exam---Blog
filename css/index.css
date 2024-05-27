@@ -364,13 +364,7 @@ summary:hover{
 
 /*Carousel extra*/
 
-@media screen and (max-width: 480px) {
-  #carousel-monty{
-    width: 100%;
-    margin: 10px;
-  }
 
-}
 
 @media screen and (max-width: 870px){
   .post-tile{
@@ -390,11 +384,22 @@ summary:hover{
     font-size: 0.8em;
   }
 
-  .carousel-post {
-    height: 150px;
-  }
 
   #center-post h2{
     height: 50%;
   }
+}
+
+@media screen and (max-width: 480px) {
+  #carousel-monty{
+    width: 100%;
+    margin: 10px;
+  }
+
+  
+  .carousel-post {
+    height: 200px;
+  }
+
+
 }

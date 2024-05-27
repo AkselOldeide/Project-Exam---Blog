@@ -53,3 +53,17 @@ body::before {
     pointer-events: none; /* Allows clicks to pass through */
     z-index: 0; /* Ensures it sits above the background image but below the content */
 }
+
+
+@media screen and (max-width: 870px){
+    #blog-entry{
+        width:300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #blog-entry{
+        width:200px;
+    }
+}
+  
