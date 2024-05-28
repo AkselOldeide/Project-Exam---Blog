@@ -1,6 +1,13 @@
+.header-text{
+  text-align: center;
+  color: var(--white);
+  font-size: 32px;
+  margin-bottom: 0px;
+}
 
 body{
-  margin: 16px
+  margin: 16px;
+  background-color: black;
 }
 
 .post{
@@ -13,8 +20,27 @@ body{
   object-fit:cover;
   height: 100%;
   width: 100%;
+
+  -webkit-box-reflect: below 1px
+  linear-gradient(transparent, transparent, #0004);
+  transform-origin: center;
 }
 
+#top-logo{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+
+#top-logo > h1{
+  font-size: 84px;
+  margin: 0px;
+}
+
+#top-logo > p{
+  margin-top: 0px;
+}
 
 /*############################# Carousel elements ####################################*/
 
@@ -64,10 +90,11 @@ body{
 }
 
 #carousel-monty {
+  background-color: black;
+height: 400px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0 auto;
 }
 
 #right-post:hover,
@@ -92,6 +119,7 @@ body{
 
 #right-post,
 #left-post {
+  animation-duration: 200ms;
   z-index: 0;
   opacity: 70%;
 }
@@ -142,12 +170,13 @@ body{
 
 
 #display-blog {
+  border-radius: 10px;
   color: white;
-  background-color: rgb(94, 94, 94);
+  background-color: rgb(29, 29, 29);
   text-align: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content:center;
 }
 
 #display-blog div {
@@ -156,6 +185,8 @@ body{
   align-items: center;
   position: relative;
   overflow: hidden; 
+  transition-duration: 200ms;
+  border-radius: 10px;
 }
 
 #display-blog div::before {
@@ -179,6 +210,8 @@ body{
   background: rgba(0, 0, 0, 0.562);
   opacity: 0.7;
   cursor: url(../assets/Vector-c.png) 5 5, auto;;
+  box-shadow: var(--black) 3px 3px 1px;
+
 }
 
 .text-content {
@@ -203,6 +236,7 @@ body{
   display: -webkit-box; 
   -webkit-line-clamp: 5; 
   -webkit-box-orient: vertical; 
+  margin-bottom: 0px;
 }
 
 .text-content h2{
@@ -232,7 +266,7 @@ body{
 .index-button{
   height: 40px;
   width: 160px;
-  background-color: var(--grey);
+  background-color:rgb(60, 60, 60);
   border: solid 1px var(--white);
   border-radius: 5px;
 
@@ -253,6 +287,10 @@ body{
   flex-direction: row;
   justify-content: space-evenly;
   background-size: cover;
+}
+
+.page-indicator{
+  color: var(--white);
 }
 
 
@@ -277,7 +315,6 @@ button[disabled]{
 #sort-and-filter{
   color: var(--white);
   padding: 20px;
-  margin-top: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -326,7 +363,7 @@ summary:hover{
 
 .overlay {
   position: absolute;
-  
+
   top: 0;
   bottom: 0;
   width: 100%;
@@ -359,6 +396,10 @@ summary:hover{
   position: relative;
   height: 250px;
   max-width: 400px;
+}
+
+.carousel-post, .post, .thumbnail-image{
+  border-radius: 10px;
 }
 
 

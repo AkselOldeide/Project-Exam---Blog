@@ -75,6 +75,8 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("body").value = getData.body || "";
             document.getElementById("tag").value = (getData.tags && getData.tags.length > 0) ? getData.tags[0] : "";
             document.getElementById("image").value = (getData.media && getData.media.url) ? getData.media.url : "";
+            document.getElementById("alt").value = getData.media.alt || "";
+            console.log(getData.media.alt)
 
             adjustTextareaHeight(document.getElementById("body"));
             updateCharCount()
@@ -94,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const bodyData = document.getElementById("body").value.trim();
         const tagData = document.getElementById("tag").value.trim();
         const imageData = document.getElementById("image").value.trim();
+        const altData = document.getElementById("alt").value.trim();
     
         if (!titleData || !bodyData || !tagData || !imageData) {
             alert("All fields are required.");
@@ -118,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: titleData,
             body: bodyData,
             tags: [tagData],
-            media: isValidUrl(imageData) ? { url: imageData } : undefined
+            media: isValidUrl(imageData) ? { url: imageData, alt: altData} : undefined,
         };
     
         fetch(apiURL+"/"+postID, {
