@@ -60,7 +60,7 @@ function getPostHTML(post, position) {
   const overlayHTML = position ? `<div class="overlay arrow-${position}"></div>` : '';
   return `
     <div class="post">
-      <img class="thumbnail-image" src="${post.media.url || ''}"></img>
+      <img class="thumbnail-image" alt="${post.media.alt}" src="${post.media.url || ''}"></img>
       ${overlayHTML}
       <h2 id="post-title-center">${post.title}</h2>
     </div>
@@ -131,7 +131,7 @@ function renderPosts(blogData) {
     postElement.style.backgroundSize = "cover"
 
     postElement.innerHTML = `
-      <img src="${blogPost.media.url}" class="python-image" width="200px">   
+      <img src="${blogPost.media.url}" class="python-image" alt=${blogPost.media.alt} width="200px">   
       <article class="text-content">
         <h2>${blogPost.title}</h2>
         <h3>By Aksel Oldeide</h3>
@@ -163,6 +163,7 @@ function updatePrevBtnStatus() {
 //Buttons
 allCategoriesBtn.addEventListener('click', function(){
   currentFilter = ""
+  currentPage = 1;
   fetchBlog();
   
   allCategoriesBtn.disabled = true
@@ -173,6 +174,7 @@ allCategoriesBtn.addEventListener('click', function(){
 
 hiphopBtn.addEventListener('click', function(){
   currentFilter = "hiphop"
+  currentPage = 1;
   fetchBlog();
   
   allCategoriesBtn.disabled = false
@@ -184,6 +186,7 @@ hiphopBtn.addEventListener('click', function(){
 
 electronicBtn.addEventListener('click', function(){
   currentFilter = "electronic"
+  currentPage = 1;
   fetchBlog();
   
   allCategoriesBtn.disabled = false
@@ -195,6 +198,7 @@ electronicBtn.addEventListener('click', function(){
 
 indieBtn.addEventListener('click', function(){
   currentFilter = "indie-rock"
+  currentPage = 1;
   fetchBlog();
   
   allCategoriesBtn.disabled = false

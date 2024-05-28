@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const bodyData = document.getElementById("body").value.trim();
         const tagData = document.getElementById("tag").value.trim();
         const imageData = document.getElementById("image").value.trim();
+        const altData = document.getElementById("alt").value.trim();
     
         // Check if any field is empty or null
         if (!titleData || !bodyData || !tagData || !imageData) {
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: titleData,
             body: bodyData,
             tags: [tagData],
-            media: isValidUrl(imageData) ? { url: imageData } : undefined
+            media: isValidUrl(imageData) ? { url: imageData, alt:altData} : undefined
         };
     
         fetch(apiURL, {
