@@ -78,12 +78,16 @@ body::before {
     height: 100%;
     background: rgba(0, 0, 0, 0.798);
     pointer-events: none; 
-    z-index: 0; 
+    z-index: 0;
+     
 }
+
+
 
 @media screen and (max-width: 870px) {
     header{
         opacity: 0.9;
+        
     }
     
     body{
