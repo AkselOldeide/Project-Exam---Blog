@@ -1,4 +1,4 @@
-<img src="assets/Group.png" width="auto"/> 
+<img src="assets/readme/Group.png" width="auto"/> 
 
 # GateFold Music Blog 
 
