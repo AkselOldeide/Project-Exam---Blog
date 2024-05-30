@@ -38,8 +38,8 @@ GateFold is a music blog centered around modern music, artists and albums within
 ## 💿 Installation:
 To launch the project, go to one of the following links: 
 
-👤 [**User enviroment**](blog-aksel.netlify.app) 
-🔐 [Admin enviroment](blog-aksel.netlify.app)
+👤 [**User enviroment**](https://gatefold-blog.netlify.app) 
+🔐 [Admin enviroment](https://gatefold-blog.netlify.app/account/login)
 
 ## 💿 Navigation and usage:
 
