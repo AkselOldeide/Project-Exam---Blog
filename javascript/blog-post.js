@@ -17,10 +17,12 @@ fetch(`${blogPage}${postId}`)
     })
     .then(result => {
         const data = result.data; 
+        const createdDate = data.created.slice(0, 10)
         blogEntry.innerHTML = `
-            <img id="header-image" src="${data.media.url}">
+            <img id="header-image" src="${data.media.url}" alt="${data.media}">
             <h2>${data.title}</h2>
             <p>Author: ${data.author.name}</p>
+            <p>Created: ${createdDate}</p>
             <p>${data.body}</p>
             <p>Tag: ${data.tags}</p>
         `;

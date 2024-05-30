@@ -60,8 +60,8 @@ function append(data) {
         console.log(JSON.stringify(post.tags))
         const createdDate = post.created.slice(0, 10)
         const createdTime = post.created.slice(11, 19)
-        const editedDate = post.created.slice(0, 10)
-        const editedTime = post.created.slice(11, 19)
+        const editedDate = post.updated.slice(0, 10)
+        const editedTime = post.updated.slice(11, 19)
     
         const container = document.createElement("div");
         container.classList.add("blog-post")
