@@ -3,11 +3,11 @@
 <head>
     <!--General meta-->
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" href="/assets/logo-2D.png" type="image/png">
+    <link rel="icon" href="/assets/logo-2D.png" type="image/png" alt="GateFold logo">
     <meta name="author" content="Aksel Oldeide">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous" aria-hidden="true"></script>
     <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <!--Generic meta-->
     <meta charset="UTF-8">
@@ -17,23 +17,23 @@
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-    <header class="login-header" id="login-header">
-        <img id="logo-image" src="/assets/logo-2D.png" alt="">
+    <header class="login-header" id="login-header" aria-label="Login header">
+        <img id="logo-image" src="/assets/logo-2D.png" alt="GateFold logo">
         <h1>GateFold</h1>
         <h2>Record Shop</h2>
     </header>
 
-    <main class="login-interface" id="login-interface">
+    <main class="login-interface" id="login-interface" aria-label="Login interface">
         <h3>Log in as an existing user</h3>
-        <form class="login-form form-field">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email-field" placeholder="name@stud.noroff.no">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password-field" placeholder="*********">
-            <button id="submit-button" class="red-button" type="button">Log in</button>
+        <form class="login-form form-field" aria-label="Login form">
+            <label for="email-field">Email</label>
+            <input type="email" autocomplete="email" name="email" id="email-field" placeholder="name@stud.noroff.no" aria-label="Email field" required>
+            <label for="password-field">Password</label>
+            <input type="password" name="password" id="password-field" placeholder="*********" aria-label="Password field" required autocomplete="current-password">
+            <button id="submit-button" class="red-button" type="button" aria-label="Log in button">Log in</button>
         </form>
-        <a href="/account/register.html">Click here to sign up</a>
+        <a href="/account/register.html" aria-label="Sign up link">Click here to sign up</a>
     </main>
-    <script src="/javascript/login.js"></script>
+    <script src="/javascript/login.js" aria-hidden="true"></script>
 </body>
 </html>

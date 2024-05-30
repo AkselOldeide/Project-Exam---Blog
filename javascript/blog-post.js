@@ -22,16 +22,16 @@ fetch(`${blogPage}${postId}`)
             <img id="header-image" src="${data.media.url}" alt="${data.media}">
             <h2>${data.title}</h2>
             <p>Author: ${data.author.name}</p>
-            <p>Created: ${createdDate}</p>
+            <p style="margin-top: 0px; font-size: 12px">Created: ${createdDate}</p>
+            <p style="margin-top: 0px; font-size: 12px">${data.tags}</p>
             <p>${data.body}</p>
-            <p>Tag: ${data.tags}</p>
+   
         `;
         document.body.style.backgroundImage = `url(${data.media.url})`;
         document.body.style.backgroundPosition = "center";
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
-        
-        // Ensure the content sits above the overlay
+    
         blogEntry.style.position = 'relative';
         blogEntry.style.zIndex = '1';
     })

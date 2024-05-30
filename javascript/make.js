@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const imageData = document.getElementById("image").value.trim();
         const altData = document.getElementById("alt").value.trim();
     
-        // Check if any field is empty or null
         if (!titleData || !bodyData || !tagData || !imageData) {
             alert("All fields are required.");
             return;
@@ -83,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     
-        // Validate the image URL
         if (imageData.length > 0 && !isValidUrl(imageData)) {
             alert("Please enter a valid image URL.");
             return;
@@ -129,11 +127,21 @@ document.addEventListener("DOMContentLoaded", function() {
         if (imageURL.value.length > 12) {
             imgPreview.innerHTML = `
                 <label>Image preview:</label>
-                <img id="preview-image" src="${imageURL.value}">    
+                <img id="preview-image" src="${imageURL.value}" alt="Preview image">    
             `;
         } else {
             imgPreview.innerHTML = '';
         }
     }
 
+});
+
+// ############## Log out #################
+const logoutButtons = document.querySelectorAll(".log-out-button");
+
+logoutButtons.forEach(button => {
+    button.addEventListener("click", function logout() {
+        sessionStorage.removeItem("session-key");
+        window.location.href = "/account/login.html";
+    });
 });

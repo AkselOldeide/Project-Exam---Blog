@@ -3,11 +3,11 @@
 <head>
     <!--General meta-->
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" href="/assets/logo-2D.png" type="image/png">
+    <link rel="icon" href="/assets/logo-2D.png" type="image/png" alt="Site logo">
     <meta name="author" content="Aksel Oldeide">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous" aria-hidden="true"></script>
     <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <!--Generic meta-->
     <meta charset="UTF-8">
@@ -17,10 +17,10 @@
     <link rel="stylesheet" href="css/blog-post.css">
 </head>
 <body>
-    <header>
+    <header aria-label="Header">
         <div>
-            <a href="/index.html">
-                <i class="fas fa-chevron-left"></i>
+            <a href="/index.html" aria-label="Back to posts">
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
                 Back to posts
             </a>
         </div>
@@ -31,11 +31,10 @@
         <div></div>
     </header>
 
-    <main>
-        <section id="blog-entry">
-
+    <main aria-label="Main content">
+        <section id="blog-entry" aria-label="Blog entry">
         </section>
     </main>
-    <script src="JavaScript/blog-post.js"></script>
+    <script src="JavaScript/blog-post.js" aria-hidden="true"></script>
 </body>
 </html>

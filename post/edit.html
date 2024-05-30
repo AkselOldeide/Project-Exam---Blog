@@ -3,11 +3,12 @@
 <head>
     <!--General meta-->
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" href="/assets/logo-2D.png" type="image/png">
+    <link rel="icon" href="/assets/logo-2D.png" type="image/png" alt="GateFold logo">
     <meta name="author" content="Aksel Oldeide">
+    <meta name="description" content="Edit previously made blog posts">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous" aria-hidden="true"></script>
     <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <!--Generic meta-->
     <meta charset="UTF-8">
@@ -18,39 +19,41 @@
 </head>
 <body>
 
-    <header class="admin-header">
-        <img id="logo" src="/assets/logo-2D.png" alt="">
+    <header class="admin-header" aria-label="Admin header">
+        <img id="logo" src="/assets/logo-2D.png" alt="Site logo">
         <h2>Blog admin area</h2>      
-        <a href="entries.html">Blog list</a>
-        <a href="make.html">New post</a>
-        <a href="/account/login.html">Log out</a>
+        <a href="entries.html" aria-label="Navigate to blog list">Blog list</a>
+        <a href="make.html" aria-label="Create a new post">New post</a>
+        <a href="#" aria-label="Log out" id="log-out-button" class="log-out-button">Log out</a>
     </header>
     
-    <main class="post-creation-form">
+    <main class="post-creation-form" aria-label="Edit post form">
         <h1>Edit existing post</h1>
-        <p id="post-id"></p>
-        <form id="admin-blog-post" class="form-field">
+        <p id="post-id" aria-label="Post ID"></p>
+        <form id="admin-blog-post" class="form-field" aria-label="Admin blog post form">
             <label for="title">Title</label>
-            <input type="text" id="title" name="title">
-            <label id="text-area-label" for="body">Post content <span id="char-counter">Characters left: 2000</span></label>
-            <textarea maxlength="2000" id="body" name="body" placeholder="Blog content here..." required></textarea>
+            <input type="text" id="title" name="title" aria-label="Post title">
+            <label id="text-area-label" for="body">Post content <span id="char-counter" aria-live="polite">Characters left: 2000</span></label>
+            <textarea maxlength="2000" id="body" name="body" placeholder="Blog content here..." required aria-label="Post content"></textarea>
             <label for="tag">Tags</label>
-            <input type="text" id="tag" name="tag">
+            <input type="text" id="tag" name="tag" aria-label="Post tags">
             <label for="image">Image path</label>
-            <input type="text" name="image" id="image">
+            <input type="text" name="image" id="image" aria-label="Image path">
             <label for="alt">Image alt text</label>
-            <input type="text" name="alt" id="alt">
-            <section id="image-preview"></section>
-            <a href="#" id="submit-button" class="red-button">Submit</a>
+            <input type="text" name="alt" id="alt" aria-label="Image alt text">
+            <section id="image-preview" aria-label="Image preview"></section>
+            <a href="#" id="submit-button" class="red-button" aria-label="Submit post">Submit</a>
         </form>
     </main>
 
-    <footer class="admin-footer">
-        <a href="entries.html"><i class="fas fa-list-alt"></i></a>
-        <a href="make.html"><i class="fas fa-pencil-alt"></i></a>
-        <a href="/account/login.html"><i class="fas fa-sign-out-alt"></i></a>
+    <footer class="admin-footer" aria-label="Admin footer">
+        <nav>
+            <a href="entries.html" aria-label="Navigate to blog list"><i class="fas fa-list-alt" aria-hidden="true"></i></a>
+            <a href="make.html" aria-label="Create a new post"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Log out" id="log-out-small" class="log-out-button"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></a>
+        </nav>
     </footer>
 
-    <script src="/javascript/edit.js"></script>
+    <script src="/javascript/edit.js" aria-hidden="true"></script>
 </body>
 </html>
