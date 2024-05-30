@@ -82,7 +82,7 @@ body{
 }
 
 .carousel-post:hover .overlay {
-  background: rgba(0, 0, 0, 0.1); /* Add slight background color on hover */
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .carousel-post:hover {
@@ -373,12 +373,12 @@ summary:hover{
   align-items: center;
   justify-content: center;
   transition: background 0.3s ease;
-  color: white; /* For debugging text */
+  color: white;
 }
 
 .arrow-left {
   left: 0;
-  background-image: url('/assets/leftbanner.png'); /* Replace with your left arrow image */
+  background-image: url('/assets/leftbanner.png'); 
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -386,7 +386,7 @@ summary:hover{
 
 .arrow-right {
   right: 0;
-  background-image: url('/assets/rightbanner.png'); /* Replace with your right arrow image */
+  background-image: url('/assets/rightbanner.png'); 
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

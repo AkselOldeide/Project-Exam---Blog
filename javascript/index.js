@@ -138,7 +138,6 @@ function renderPosts(blogData) {
       </article>
     `;
 
-    // Add an event listener to navigate to the blog post page when clicked
     postElement.addEventListener('click', () => {
       window.location.href = `/blog-post.html?ID=${blogPost.id}`;
     });
@@ -237,6 +236,5 @@ prevBtns.forEach(btn => {
 });
 
 updatePrevBtnStatus();
-
 fetchCarousel();
 fetchBlog();

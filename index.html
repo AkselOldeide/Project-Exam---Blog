@@ -3,68 +3,65 @@
 <head>
     <!--General meta-->
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" href="/assets/logo-2D.png" type="image/png">
+    <link rel="icon" href="/assets/logo-2D.png" type="image/png" alt="Site logo">
     <meta name="author" content="Aksel Oldeide">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/925aa09c49.js" crossorigin="anonymous" aria-hidden="true"></script>
     <link href="https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <!--Generic meta-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--Specific meta-->
     <link rel="stylesheet" href="/CSS/index.css">
     <title>Browse blog posts</title>
 </head>
 <body>
     <main>
-        <section id="top-logo">
+        <section id="top-logo" aria-label="Site logo and description">
             <h1>GateFold</h1>
             <p>Music Blog</p>
         </section>
 
         <h1 class="header-text">Latest posts:</h1>
-        <section id="carousel-monty">
-            <div class="carousel-post" id="left-post"></div>
-            <div class="carousel-post" id="center-post"></div>
-            <div class="carousel-post" id="right-post"></div>
+        <section id="carousel-monty" aria-label="Carousel of latest blog posts">
+            <div class="carousel-post" id="left-post" aria-label="Left post in carousel"></div>
+            <div class="carousel-post" id="center-post" aria-label="Center post in carousel"></div>
+            <div class="carousel-post" id="right-post" aria-label="Right post in carousel"></div>
         </section>  
         
-        <section id="grid-python">
+        <section id="grid-python" aria-label="Blog posts grid">
             <h1 class="header-text">Browse all posts</h1>
-            <details id="sort-and-filter">
+            <details id="sort-and-filter" aria-label="Filtering and sorting options">
                 <summary>Filtering and sorting</summary>
-                <section id="sort-buttons">
+                <section id="sort-buttons" aria-label="Sort options">
                     <p>Sort:</p>
                     <div>
-                        <button id="sort-button" class="index-button">Descending ⬇️</button>
-                        <button id="parameter-button" class="index-button">Date of creation 📅</button>
+                        <button id="sort-button" class="index-button" aria-label="Sort in descending order">Descending ⬇️</button>
+                        <button id="parameter-button" class="index-button" aria-label="Sort by date of creation">Date of creation 📅</button>
                     </div>
                 </section>
 
-                <section id="filter-buttons">
+                <section id="filter-buttons" aria-label="Filter options">
                     <p>Filter:</p>
                     <section>
-                            <button class="index-button" id="tag-show-all">Show all</button>
-                            <button class="index-button" id="tag-hiphop">Hiphop</button>
-                            <button class="index-button" id="tag-indie">Indie</button>
-                            <button class="index-button" id="tag-electronic">Electronic</button>    
+                        <button class="index-button" id="tag-show-all" aria-label="Show all posts">Show all</button>
+                        <button class="index-button" id="tag-hiphop" aria-label="Show hiphop posts">Hiphop</button>
+                        <button class="index-button" id="tag-indie" aria-label="Show indie posts">Indie</button>
+                        <button class="index-button" id="tag-electronic" aria-label="Show electronic posts">Electronic</button>    
                     </section>
                 </section>
             </details>
 
+            <section id="display-blog" aria-label="Displayed blog posts"></section>
 
-            <section id="display-blog"></section>
-
-            <section class="nav-buttons">
-                <button class="previous-button index-button">Previous Page</button>
-                <h1 class="page-indicator"></h1>
-                <button class="next-button index-button">Next page</button>
+            <section class="nav-buttons" aria-label="Pagination controls">
+                <button class="previous-button index-button" aria-label="Previous page">Previous Page</button>
+                <h1 class="page-indicator" aria-label="Current page indicator"></h1>
+                <button class="next-button index-button" aria-label="Next page">Next page</button>
             </section>
-
         </section>
     </main>
-    <script src="/JavaScript/index.js"></script>
+    <script src="/JavaScript/index.js" aria-hidden="true"></script>
 </body>
 </html>

@@ -21,7 +21,6 @@ function deletePost(blogName, postId) {
     })
     .then(response => {
         if (response.ok) {
-            console.log('Post deleted successfully');
             window.alert("Post deleted successfully!");
             location.reload();
         } else {
@@ -57,7 +56,6 @@ document.addEventListener('click', function(event) {
 
 function append(data) {
     data.data.forEach((post) => {
-        console.log(JSON.stringify(post.tags))
         const createdDate = post.created.slice(0, 10)
         const createdTime = post.created.slice(11, 19)
         const editedDate = post.updated.slice(0, 10)
@@ -100,3 +98,13 @@ fetch(blogPage)
         div.textContent = "Error fetching data.";
         content.appendChild(div);
     });
+
+// ############## Log out #################
+const logoutButtons = document.querySelectorAll(".log-out-button");
+
+logoutButtons.forEach(button => {
+    button.addEventListener("click", function logout() {
+        sessionStorage.removeItem("session-key");
+        window.location.href = "/account/login.html";
+    });
+});

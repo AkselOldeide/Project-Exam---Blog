@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("tag").value = (getData.tags && getData.tags.length > 0) ? getData.tags[0] : "";
             document.getElementById("image").value = (getData.media && getData.media.url) ? getData.media.url : "";
             document.getElementById("alt").value = getData.media.alt || "";
-            console.log(getData.media.alt)
 
             adjustTextareaHeight(document.getElementById("body"));
             updateCharCount()
@@ -158,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (imageURL.value.length > 12) {
             imgPreview.innerHTML = `
                 <label>Image preview:</label>
-                <img id="preview-image" src="${imageURL.value}">    
+                <img id="preview-image" src="${imageURL.value}" alt="Preview image">    
             `;
         } else {
             imgPreview.innerHTML = '';
@@ -188,4 +187,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const bodyTextarea = document.getElementById("body");
     adjustTextareaHeight(bodyTextarea);
+});
+
+// ############## Log out #################
+const logoutButtons = document.querySelectorAll(".log-out-button");
+
+logoutButtons.forEach(button => {
+    button.addEventListener("click", function logout() {
+        sessionStorage.removeItem("session-key");
+        window.location.href = "/account/login.html";
+    });
 });

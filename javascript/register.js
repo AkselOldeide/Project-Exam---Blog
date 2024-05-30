@@ -2,7 +2,7 @@ const apiLink = "https://v2.api.noroff.dev/auth/register";
 const mailField = document.getElementById("email-field");
 const usernameField = document.getElementById("username-field");
 const passwordField = document.getElementById("password-field");
-const registerBtn = document.getElementById("register-button");
+const registerBtn = document.getElementById("submit-button");
 
 registerBtn.onclick = function register() {
     const mailValue = mailField.value;
