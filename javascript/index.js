@@ -16,7 +16,6 @@ const prevBtns = document.querySelectorAll('.previous-button');
 const pageIndicators = document.querySelectorAll('.page-indicator');
 
 
-
 /*
 ############################################# Carousel  ###################################################
 */
@@ -84,7 +83,7 @@ rightPost.addEventListener('click', () => {
   rightPost.classList.add('active');
 });
 
-/*######################################### Python ######################################## */
+/*######################################### Sortable main content ######################################## */
 
 let currentPage = 1;
 let postsPerPage = 12;
@@ -160,7 +159,7 @@ function updatePrevBtnStatus() {
   });
 }
 
-//Buttons
+// ###################### Buttons ######################## 
 allCategoriesBtn.addEventListener('click', function(){
   currentFilter = ""
   currentPage = 1;
